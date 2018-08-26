@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TIC TAC TOE</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <style>
+*{}
+body{
+  margin:0px;
+  padding:0;
+}
+#board{
+  height:500px;
+  width:500px;
+  background-color:purple;
+  margin:0;
+  padding:3px;
+}
+.box{
+  position:relative;
+  height:152px;
+  width:152px;
+  background-color:#26c9e2;
+  display:inline-block;
+  margin:6px;
+
+}
+.box:hover{
+  background-color:white;
+}
+.box h1{position:absolute;font-size:108px;margin:10px 30px;}
+  </style>
+</head>
+<body>
+  <div id="board">
+    <div class="box" onmousedown="put(0)"></div>
+    <div class="box" onmousedown="put(1)"></div>
+    <div class="box" onmousedown="put(2)"></div>
+    <div class="box" onmousedown="put(3)"></div>
+    <div class="box" onmousedown="put(4)"></div>
+    <div class="box" onmousedown="put(5)"></div>
+    <div class="box" onmousedown="put(6)"></div>
+    <div class="box" onmousedown="put(7)"></div>
+    <div class="box" onmousedown="put(8)"></div>
+  </div>
+
+<script>
+var arr=[0,1,2,3,4,5,6,7,8];
+var pos=[0,1,2,3,4,5,6,7,8];
+var boxes = document.getElementsByClassName("box");
+function put(i){
+  if(boxes[i].childElementCount==0){
+    var h=document.createElement("h1");
+    var text=document.createTextNode("O");
+    h.innerHTML="O"; 
+    boxes[i].appendChild(h);
+    arr[i]="O";
+    pos.splice(pos.indexOf(i),1);
+
+  }
+  if(check()){
+    
+    setTimeout(function(){alert("YOU WON IT ! ");},100)
+    setTimeout(function(){document.location.reload()},500)
+  }
+  
+  
+  var pc=Math.floor(Math.random() * pos.length);
+  if(boxes[pos[pc]].childElementCount==0){
+    var h=document.createElement("h1");
+    var text=document.createTextNode("O");
+    h.innerHTML="X"; 
+    boxes[pos[pc]].appendChild(h);
+    arr[pos[pc]]="X";
+    pos.splice(pc,1);
+console.log(pos)
+   }
+}
+function a(n){
+  var m = parseInt(n);
+  return(boxes[m].children[0].innerHTML)
+}
+
+
+function check(){
+
+  if(arr[0]=="O" &&  arr[1]=="O" && arr[2]=="O"){return true;}
+  else if(arr[3]=="O" &&  arr[4]=="O" && arr[5]=="O"){return true;}
+  else if(arr[6]=="O" &&  arr[7]=="O" && arr[8]=="O"){return true;}
+  else if(arr[0]=="O" &&  arr[3]=="O" && arr[6]=="O"){return true;}
+  else if(arr[1]=="O" &&  arr[4]=="O" && arr[7]=="O"){return true;}
+  else if(arr[2]=="O" &&  arr[5]=="O" && arr[8]=="O"){return true;}
+  else if(arr[0]=="O" &&  arr[4]=="O" && arr[8]=="O"){return true;}
+  else if(arr[2]=="O" &&  arr[4]=="O" && arr[6]=="O"){return true;}
+  
+
+}
+</script>
+</body>
+</html>
