@@ -3,7 +3,10 @@ body{
   margin:0px;
   border-top:6px solid purple;
 }
-
+canvas{
+  position: fixed;
+  z-index: -1;
+}
 #header{
   padding:10px 20px;
   margin:0px auto;
